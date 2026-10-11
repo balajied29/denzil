@@ -24,13 +24,14 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "Cordelia & Denzil — Holy Matrimony, Shillong",
   description:
-    "Saturday, 14th November 2026 · Ceremony 1:30 PM at the Cathedral of Mary Help of Christians, Laitumkhrah · Reception 5:00 PM at City Hut Dhaba, Police Bazar, Shillong.",
+    "Saturday, 14th November 2026 · 1:30 PM · Cathedral of Mary Help of Christians, Laitumkhrah, Shillong. With joyful hearts, we invite you to celebrate with us.",
   applicationName: "Cordelia & Denzil",
   authors: [{ name: "Cordelia & Denzil" }],
   formatDetection: { telephone: false, date: false, address: false },
   openGraph: {
-    title: "Cordelia & Denzil — Holy Matrimony",
-    description: "With joyful hearts, we invite you to celebrate with us · 14th November 2026 · Shillong",
+    title: "Cordelia & Denzil — Holy Matrimony, Shillong",
+    description:
+      "Saturday, 14th November 2026 · 1:30 PM · Cathedral of Mary Help of Christians, Laitumkhrah, Shillong. With joyful hearts, we invite you to celebrate with us.",
     type: "website",
     locale: "en_IN",
   },

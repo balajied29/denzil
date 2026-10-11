@@ -21,8 +21,18 @@ const tangent = (a: Pt, b: Pt, c: Pt, d: Pt, t: number) => {
 
 const LEAF = "M0 0 C5 -6.5 15 -7.5 23 0 C15 7.5 5 6.5 0 0 Z";
 
-/** Line-art vine, drawn in currentColor, like the corners of the card. */
-export function Vine({ className, leaves = 11 }: P & { leaves?: number }) {
+/**
+ * Line-art vine like the corners of the card. Drawn in currentColor on the
+ * page; the share-image generator passes an explicit `color` and `size`
+ * because it renders outside the DOM.
+ */
+export function Vine({
+  className,
+  leaves = 11,
+  color = "currentColor",
+  size,
+  style,
+}: P & { leaves?: number; color?: string; size?: number; style?: React.CSSProperties }) {
   const a: Pt = [6, 194];
   const b: Pt = [40, 120];
   const c: Pt = [70, 40];
@@ -37,7 +47,16 @@ export function Vine({ className, leaves = 11 }: P & { leaves?: number }) {
     return { x: fr(x), y: fr(y), ang: fr(ang), s: fr(s), k: i };
   });
   return (
-    <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" className={className} aria-hidden>
+    <svg
+      viewBox="0 0 200 200"
+      width={size}
+      height={size}
+      fill="none"
+      stroke={color}
+      className={className}
+      style={style}
+      aria-hidden
+    >
       <path d={`M${a} C${b} ${c} ${d}`} strokeWidth="1.1" strokeLinecap="round" />
       {items.map((l) => (
         <g key={l.k} transform={`translate(${l.x} ${l.y}) rotate(${l.ang}) scale(${l.s})`}>
@@ -45,7 +64,7 @@ export function Vine({ className, leaves = 11 }: P & { leaves?: number }) {
           <path d="M2 0 L18 0" strokeWidth="0.6" opacity="0.7" />
         </g>
       ))}
-      <circle cx={d[0]} cy={d[1]} r="2.2" fill="currentColor" stroke="none" />
+      <circle cx={d[0]} cy={d[1]} r="2.2" fill={color} stroke="none" />
     </svg>
   );
 }
